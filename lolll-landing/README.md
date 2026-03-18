@@ -1,13 +1,7 @@
-# Lolll Landing - Next.js App
+# Lolll Landing Page
 
- **Initialized Successfully**
-
-## Features
-- Next.js 14 with App Router
-- React 18
-- TypeScript
-- CSS Modules support
-- Tailwind CSS
+A simple, fast, and accessible Next.js landing page.
 
 ## Getting Started
-echo 'Fix completed successfully'
+
+1. Install dependencies:
