@@ -1,86 +1,73 @@
-import React from 'react';
+'use client';
 import Image from 'next/image';
-import Link from 'next/link';
-import clsx from 'clsx';
+import { useState } from 'react';
 
-export interface HeroProps {
-  headline?: string;
-  tagline?: string;
-  ctaLabel?: string;
-  ctaHref?: string;
-  backgroundImage?: string;
-  className?: string;
-  onCtaClick?: () => void;
-}
+export default function Hero() {
+  const [imageError, setImageError] = useState(false);
 
-export const Hero = ({
-  headline,
-  tagline,
-  ctaLabel,
-  ctaHref = '#',
-  backgroundImage,
-  className,
-  onCtaClick,
-}: HeroProps) => {
-  // Fallback values
-  const finalHeadline = headline ?? 'Welcome to Lolll';
-  const finalTagline = tagline ?? 'Building something awesome.';
-  const finalCtaLabel = ctaLabel ?? 'Get Started';
-
-  // Warn on missing props
-  if (!headline) console.warn('[Hero component] Missing "headline" prop, using fallback');
-  if (!tagline) console.warn('[Hero component] Missing "tagline" prop, using fallback');
-  if (!ctaLabel) console.warn('[Hero component] Missing "ctaLabel" prop, using fallback');
-  if (!ctaHref || ctaHref === '#') console.warn('[Hero component] Missing ctaHref, using "#" fallback');
-  if (!backgroundImage) console.warn('[Hero component] backgroundImage prop is undefined, skipping image');
+  const handleImageError = () => {
+    console.error('Hero image failed to load');
+    setImageError(true);
+  };
 
   return (
-    <header className={clsx('relative flex flex-col items-center justify-center h-[50vh] md:h-[60vh] lg:h-[70vh] bg-gray-900 text-white overflow-hidden', className)}>
-      {/* Background Image */}
-      {backgroundImage && (
-        <div className="absolute inset-0 z-0">
+    <section aria-labelledby="hero-heading" className="relative bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 overflow-hidden">
+      <div className="absolute inset-0">
+        {!imageError ? (
           <Image
-            src={backgroundImage}
-            alt="Hero background"
+            src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920&q=80"
+            alt="Professional gaming tournament with excited crowd and players"
             fill
-            className="object-cover object-center"
+            className="object-cover opacity-30"
             priority
-            onError={() => {
-              console.warn('[Hero component] Failed to load background image', backgroundImage);
-            }}
+            onError={handleImageError}
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-      )}
-      {!backgroundImage && (
-        <div className="absolute inset-0 bg-gray-800">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-700" />
+        ) : (
+          <div
+            className="w-full h-full bg-gray-800 flex items-center justify-center"
+            role="img"
+            aria-label="Gaming tournament background placeholder"
+          >
+            <div className="text-gray-600 text-lg">Gaming Background</div>
           </div>
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-4 sm:mb-6">
-          {finalHeadline}
-        </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto">
-          {finalTagline}
-        </p>
-        <Link
-          href={ctaHref}
-          onClick={(e) => {
-            if (onCtaClick) {
-              e.preventDefault();
-              onCtaClick();
-            }
-          }}
-          className="inline-flex items-center justify-center px-8 py-3 sm:px-10 sm:py-4 border border-transparent text-base sm:text-lg font-medium rounded-md text-gray-900 bg-white hover:bg-gray-100 transition-colors duration-200"
-        >
-          {finalCtaLabel}
-        </Link>
+        )}
       </div>
-    </header>
+
+      <div className="relative container mx-auto px-4 py-32 md:py-48">
+        <header>
+          <h1 id="hero-heading" className="text-4xl md:text-6xl font-bold mb-6">
+            Welcome to{' '}
+            <span className="text-blue-400">LOL Landing</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl">
+            Experience gaming like never before. Connect with pro players, compete in tournaments, and level up your skills.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="/register"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition duration-300 text-center focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+              aria-label="Register for LOL Gaming"
+            >
+              Join Tournament
+            </a>
+            <a
+              href="/learn"
+              className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 text-center focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+              aria-label="Learn more about LOL Gaming features"
+            >
+              Learn More
+            </a>
+          </div>
+        </header>
+
+        <aside className="mt-8">
+          <p className="text-sm text-gray-400">
+            Over <strong className="text-blue-400">50,000</strong> active players{' '}
+            <strong className="text-blue-400">$500K</strong> total prizes awarded
+          </p>
+        </aside>
+      </div>
+    </section>
   );
-};
+}
