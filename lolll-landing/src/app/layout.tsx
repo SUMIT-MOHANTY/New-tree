@@ -5,8 +5,11 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Lolll Landing',
-  description: 'Next.js landing page with React and CSS modules',
+  title: 'Lolll - Make Every Moment Fun',
+  description: 'Discover the magic of laughter with Lolll - your gateway to endless entertainment',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -16,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div id="root">{children}</div>
+      </body>
     </html>
   )
 }
