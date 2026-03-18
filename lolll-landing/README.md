@@ -1,13 +1,11 @@
-# Lolll Landing - Next.js App
+# Lolll Landing Page
 
- **Initialized Successfully**
-
-## Features
-- Next.js 14 with App Router
-- React 18
-- TypeScript
-- CSS Modules support
-- Tailwind CSS
+A responsive Next.js static landing page styled with Tailwind CSS.
 
 ## Getting Started
-echo 'Fix completed successfully'
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Installation

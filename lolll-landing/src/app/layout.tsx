@@ -1,22 +1,20 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Lolll Landing',
-  description: 'Next.js landing page with React and CSS modules',
-}
+  title: "Lolll - Be laugh-first",
+  description: "Join Lolll and discover the joy of humor-first content that brightens your day.",
+  viewport: "width=device-width, initial-scale=1",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
-  )
+  );
 }

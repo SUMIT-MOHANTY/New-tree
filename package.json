@@ -1,0 +1,21 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@landing/web",
+    "build": "npm run build --workspace=@landing/web",
+    "start": "npm run start --workspace=@landing/web",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "turbo": "^1.10.7"
+  }
+}
