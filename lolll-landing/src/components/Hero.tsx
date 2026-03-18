@@ -1,14 +1,11 @@
-'use client';
-import Image from 'next/image';
-import { useState } from 'react';
+'use client' import Image from 'next/image' import { useState } from 'react'
 
 export default function Hero() {
-  const [imageError, setImageError] = useState(false);
-
+  const [imageError, setImageError] = useState(false)
   const handleImageError = () => {
-    console.error('Hero image failed to load');
-    setImageError(true);
-  };
+    console.error('Hero image failed to load')
+    setImageError(true)
+  }
 
   return (
     <section aria-labelledby="hero-heading" className="relative bg-gradient-to-r from-purple-900 via-blue-900 to-indigo-900 overflow-hidden">
@@ -33,10 +30,12 @@ export default function Hero() {
           </div>
         )}
       </div>
-
       <div className="relative container mx-auto px-4 py-32 md:py-48">
         <header>
-          <h1 id="hero-heading" className="text-4xl md:text-6xl font-bold mb-6">
+          <h1
+            id="hero-heading"
+            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+          >
             Welcome to{' '}
             <span className="text-blue-400">LOL Landing</span>
           </h1>
@@ -60,7 +59,6 @@ export default function Hero() {
             </a>
           </div>
         </header>
-
         <aside className="mt-8">
           <p className="text-sm text-gray-400">
             Over <strong className="text-blue-400">50,000</strong> active players{' '}
@@ -69,5 +67,5 @@ export default function Hero() {
         </aside>
       </div>
     </section>
-  );
+  )
 }
