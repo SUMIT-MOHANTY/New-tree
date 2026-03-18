@@ -1,0 +1,11 @@
+import Hero from '@/components/Hero'
+
+export default function Home() {
+  return (
+    <Hero
+      heading="Welcome to lolll"
+      tagline="Fast, accessible, and modern web experiences"
+      ctaLabel="Get Started"
+    />
+  )
+}
